@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/Hakan/Desktop/SeeFood-master 2/PhotoSearch.xcodeproj">
+      location = "container:/Users/Hakan/Desktop/SeeFood-master 2/PhotoSearch.xcodeproj">
    </FileRef>
 </Workspace>

@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,7 +54,7 @@
         <!--Download View Controller-->
         <scene sceneID="ePr-7g-msS">
             <objects>
-                <viewController id="Fbc-Kj-36m" customClass="DownloadViewController" customModule="DownloadTaskWithNSURLSession" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Fbc-Kj-36m" customClass="DownloadViewController" customModule="PhotoSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7tZ-8Y-Pv7"/>
                         <viewControllerLayoutGuide type="bottom" id="T63-C3-Vf2"/>
@@ -62,95 +63,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twR-n7-bvW">
-                                <rect key="frame" x="111" y="153" width="153" height="57"/>
-                                <color key="backgroundColor" red="0.98039215690000003" green="0.25098039220000001" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="153" id="Fm1-xL-ARa"/>
-                                    <constraint firstAttribute="height" constant="57" id="x9w-6e-kgs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Download">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="startDownload:" destination="Fbc-Kj-36m" eventType="touchUpInside" id="Ijg-u4-Dce"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMl-Zt-gvS">
-                                <rect key="frame" x="111" y="230" width="30" height="30"/>
-                                <color key="backgroundColor" red="0.9715142846" green="0.0" blue="0.19507753850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="5s4-Jb-gQM"/>
-                                    <constraint firstAttribute="width" constant="30" id="Sm5-I1-eT5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="||">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="pause:" destination="Fbc-Kj-36m" eventType="touchUpInside" id="ORF-lX-sv5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFm-aS-WT5">
-                                <rect key="frame" x="172" y="231" width="30" height="30"/>
-                                <color key="backgroundColor" red="0.9715142846" green="0.0" blue="0.19507753850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="&gt;">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resume:" destination="Fbc-Kj-36m" eventType="touchUpInside" id="KYp-rM-Ix2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8k3-HR-HLA">
-                                <rect key="frame" x="234" y="230" width="30" height="30"/>
-                                <color key="backgroundColor" red="0.9715142846" green="0.0" blue="0.19507753850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="X">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancel:" destination="Fbc-Kj-36m" eventType="touchUpInside" id="7et-Ea-sZK"/>
-                                </connections>
-                            </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UL5-xh-EkE">
-                                <rect key="frame" x="111" y="299" width="153" height="2"/>
+                                <rect key="frame" x="111" y="302" width="153" height="2"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgq-O6-lK7">
+                                <rect key="frame" x="10" y="274" width="355" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.14392707081907755" green="0.52202585000087098" blue="0.79513007614213205" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8k3-HR-HLA" firstAttribute="top" secondItem="twR-n7-bvW" secondAttribute="bottom" constant="20" id="4oE-Td-utp"/>
-                            <constraint firstItem="bMl-Zt-gvS" firstAttribute="leading" secondItem="twR-n7-bvW" secondAttribute="leading" id="7WK-L5-Xxn"/>
-                            <constraint firstItem="tFm-aS-WT5" firstAttribute="width" secondItem="bMl-Zt-gvS" secondAttribute="width" id="7pz-j2-Iq1"/>
-                            <constraint firstItem="8k3-HR-HLA" firstAttribute="width" secondItem="tFm-aS-WT5" secondAttribute="width" id="Du5-5h-Un0"/>
-                            <constraint firstItem="8k3-HR-HLA" firstAttribute="trailing" secondItem="twR-n7-bvW" secondAttribute="trailing" id="Ids-W2-yXd"/>
-                            <constraint firstItem="bMl-Zt-gvS" firstAttribute="top" secondItem="twR-n7-bvW" secondAttribute="bottom" constant="20" id="JAW-ou-Rqx"/>
-                            <constraint firstItem="tFm-aS-WT5" firstAttribute="top" secondItem="twR-n7-bvW" secondAttribute="bottom" constant="21" id="TgF-eW-1fh"/>
-                            <constraint firstItem="tFm-aS-WT5" firstAttribute="centerX" secondItem="twR-n7-bvW" secondAttribute="centerX" id="ZcC-Hn-zCJ"/>
-                            <constraint firstItem="UL5-xh-EkE" firstAttribute="top" secondItem="tFm-aS-WT5" secondAttribute="bottom" constant="38" id="dlE-T3-yQN"/>
-                            <constraint firstItem="tFm-aS-WT5" firstAttribute="height" secondItem="bMl-Zt-gvS" secondAttribute="height" id="kg8-dJ-mQX"/>
-                            <constraint firstItem="twR-n7-bvW" firstAttribute="top" secondItem="7tZ-8Y-Pv7" secondAttribute="bottom" constant="133" id="lMx-0T-5tX"/>
-                            <constraint firstItem="UL5-xh-EkE" firstAttribute="centerX" secondItem="twR-n7-bvW" secondAttribute="centerX" id="lpF-jF-D9H"/>
-                            <constraint firstItem="UL5-xh-EkE" firstAttribute="width" secondItem="twR-n7-bvW" secondAttribute="width" id="nkP-tX-c5W"/>
-                            <constraint firstItem="8k3-HR-HLA" firstAttribute="height" secondItem="tFm-aS-WT5" secondAttribute="height" id="oji-bk-JEL"/>
-                            <constraint firstItem="twR-n7-bvW" firstAttribute="centerX" secondItem="v4i-op-fak" secondAttribute="centerX" id="uko-3D-M80"/>
-                            <constraint firstItem="bMl-Zt-gvS" firstAttribute="leading" secondItem="twR-n7-bvW" secondAttribute="leading" id="zcx-jP-F8c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UL5-xh-EkE" secondAttribute="trailing" constant="95" id="1O7-sc-xrl"/>
+                            <constraint firstItem="wgq-O6-lK7" firstAttribute="trailing" secondItem="9FZ-SZ-3gx" secondAttribute="trailing" constant="10" id="Bif-O4-Paw"/>
+                            <constraint firstItem="UL5-xh-EkE" firstAttribute="top" secondItem="wgq-O6-lK7" secondAttribute="bottom" constant="10" id="D5K-eX-0a3"/>
+                            <constraint firstItem="UL5-xh-EkE" firstAttribute="leading" secondItem="v4i-op-fak" secondAttribute="leadingMargin" constant="95" id="Dmi-it-iaZ"/>
+                            <constraint firstItem="wgq-O6-lK7" firstAttribute="top" secondItem="7tZ-8Y-Pv7" secondAttribute="bottom" constant="254" id="EQS-js-D6X"/>
+                            <constraint firstItem="wgq-O6-lK7" firstAttribute="leading" secondItem="9FZ-SZ-3gx" secondAttribute="leading" constant="10" id="FaM-tz-7nw"/>
+                            <constraint firstItem="wgq-O6-lK7" firstAttribute="leading" secondItem="v4i-op-fak" secondAttribute="leading" constant="10" id="HaX-wD-7At"/>
+                            <constraint firstItem="T63-C3-Vf2" firstAttribute="top" secondItem="UL5-xh-EkE" secondAttribute="bottom" constant="363" id="Kw6-0j-hHq"/>
+                            <constraint firstItem="wgq-O6-lK7" firstAttribute="top" secondItem="7tZ-8Y-Pv7" secondAttribute="bottom" constant="254" id="VKk-Yh-b0M"/>
+                            <constraint firstAttribute="trailing" secondItem="wgq-O6-lK7" secondAttribute="trailing" constant="10" id="jav-4e-NeR"/>
+                            <constraint firstItem="UL5-xh-EkE" firstAttribute="top" secondItem="wgq-O6-lK7" secondAttribute="bottom" constant="10" id="lu9-i2-9nS"/>
+                            <constraint firstItem="UL5-xh-EkE" firstAttribute="top" secondItem="wgq-O6-lK7" secondAttribute="bottom" constant="10" id="yH0-hE-RWd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9FZ-SZ-3gx"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="zcx-jP-F8c"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="progressView" destination="UL5-xh-EkE" id="078-7R-IHV"/>
+                        <outlet property="statusLabel" destination="wgq-O6-lK7" id="JMA-fn-yqq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gpZ-Lc-ZiH" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-313" y="0.0"/>
+            <point key="canvasLocation" x="-314.39999999999998" y="-0.44977511244377816"/>
         </scene>
     </scenes>
 </document>
