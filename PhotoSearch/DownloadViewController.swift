@@ -33,7 +33,6 @@ class DownloadViewController: UIViewController, URLSessionDownloadDelegate, UIDo
     @IBOutlet var progressView: UIProgressView!
     @IBOutlet weak var statusLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let backgroundSessionConfiguration = URLSessionConfiguration.background(withIdentifier: "backgroundSession")
