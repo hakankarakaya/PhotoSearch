@@ -60,6 +60,11 @@ class DownloadViewController: UIViewController, URLSessionDownloadDelegate, UIDo
             self.present(uiAlert, animated: true, completion: nil)
             
             uiAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                do {
+                    try fileManager.removeItem(atPath: destinationURLForFile.path)
+                } catch {
+                    print("Could not clear temp folder: \(error)")
+                }
                 self.statusLabel.text = "Downloading model please wait..."
                 let url = URL(string: "http://www.pcarsiv.com/cars.zip")!
                 self.downloadTask = self.backgroundSession.downloadTask(with: url)

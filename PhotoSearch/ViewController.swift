@@ -103,12 +103,11 @@ class ViewController: UIViewController, FrameExtractorDelegate {
                 // Update UI on main queu
                 let article = (self?.vowels.contains(topResult.identifier.first!))! ? "an" : "a"
                 DispatchQueue.main.async { [weak self] in
-                    if(topResult.confidence > 0.8){
-                        self?.predictLabel.text = "\(Int(topResult.confidence * 100))% it's \(article) \(topResult.identifier)"
-                    }else
-                    {
-                        self?.predictLabel.text = ""
+                    var items=""
+                    for item in results[0...2] {
+                        items = items + (item.identifier) + "\n"
                     }
+                    self?.predictLabel.text = items
                     self?.settingImage = false
                 }
             }
